@@ -8,7 +8,18 @@ export interface PizzaState {
 }
 
 export const initialState: PizzaState = {
-    data: [],
+    data: [
+        {
+            "name": "Plain Ol' Pepperoni",
+            "toppings": [
+              {
+                "id": 10,
+                "name": "pepperoni"
+              }
+            ],
+            "id": 3
+          }
+    ],
     loaded: false,
     loading: false,
 };
@@ -42,4 +53,20 @@ export function reducer(
     }
 
     return state;
+}
+
+export const getPizzasLoading = (state: PizzaState) => state.loading;
+export const getPizzasLoaded = (state: PizzaState) => state.loaded;
+export const getPizzas = (state: PizzaState) => state.data;
+
+
+
+const state = {
+    product: {
+        pizzas: {
+            data: [],
+            loaded: false,
+            loading: false
+        },
+    }
 }
