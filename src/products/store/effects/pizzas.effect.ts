@@ -50,4 +50,16 @@ export class PizzasEffects {
             );
         })
     );
+
+    @Effect()
+    removePizza$ = this.actions$.pipe(
+        ofType(pizzasActions.REMOVE_PIZZA),
+        map((action: pizzasActions.RemovePizza) => action.payload),
+        switchMap((pizza) => {
+            return this.pizzaService.removePizza(pizza).pipe(
+                map(() => new pizzasActions.RemovePizzaSuccess(pizza)),
+                catchError(error => of(new pizzasActions.RemovePizzaFail(error)))
+            );
+        })
+    );
 }

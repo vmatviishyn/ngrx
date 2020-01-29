@@ -83,6 +83,32 @@ export function reducer(
                 loaded: false
             };
         }
+
+        // remove pizza cases
+        case fromPizzas.REMOVE_PIZZA: {
+            return {
+                ...state,
+                loading: true
+            };
+        }
+        case fromPizzas.REMOVE_PIZZA_SUCCESS: {
+            const pizza = action.payload;
+            const { [pizza.id]: removed, ...entities } = state.entities;
+
+            return {
+                ...state,
+                loading: false,
+                loaded: true,
+                entities,
+            };
+        }
+        case fromPizzas.REMOVE_PIZZA_FAIL: {
+            return {
+                ...state,
+                loading: false,
+                loaded: false
+            };
+        }
     }
 
     return state;
