@@ -52,13 +52,15 @@ export function reducer(
             };
         }
 
-        // create pizza cases
+        // create or update pizza cases
+        case fromPizzas.UPDATE_PIZZA:
         case fromPizzas.CREATE_PIZZA: {
             return {
                 ...state,
                 loading: true
             };
         }
+        case fromPizzas.UPDATE_PIZZA_SUCCESS:
         case fromPizzas.CREATE_PIZZA_SUCCESS: {
             const pizza = action.payload;
             const entities = {
@@ -73,6 +75,7 @@ export function reducer(
                 entities,
             };
         }
+        case fromPizzas.UPDATE_PIZZA_FAIL:
         case fromPizzas.CREATE_PIZZA_FAIL: {
             return {
                 ...state,

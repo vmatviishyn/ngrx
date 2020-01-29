@@ -2,15 +2,22 @@ import { Action } from '@ngrx/store';
 
 import { Pizza } from 'src/products/models/pizza.model';
 
-// load pizzas
+// load pizzas actions
 export const LOAD_PIZZAS = '[Products] Load Pizzas';
 export const LOAD_PIZZAS_FAIL = '[Products] Load Pizzas Fail';
 export const LOAD_PIZZAS_SUCCESS = '[Products] Load Pizzas Success';
 
+// create pizzas actions
 export const CREATE_PIZZA = '[Products] Create Pizza';
 export const CREATE_PIZZA_FAIL = '[Products] Create Pizza Fail';
 export const CREATE_PIZZA_SUCCESS = '[Products] Create Pizza Success';
 
+// update pizzas actions
+export const UPDATE_PIZZA = '[Products] Update Pizza';
+export const UPDATE_PIZZA_FAIL = '[Products] Update Pizza Fail';
+export const UPDATE_PIZZA_SUCCESS = '[Products] Update Pizza Success';
+
+// load pizzas action creators
 export class LoadPizzas implements Action {
     readonly type = LOAD_PIZZAS;
 }
@@ -25,7 +32,7 @@ export class LoadPizzasSuccess implements Action {
     constructor(public payload: Pizza[]) {}
 }
 
-
+// create pizzas action creators
 export class CreatePizza implements Action {
     readonly type = CREATE_PIZZA;
     constructor(public payload: Pizza) {}
@@ -41,6 +48,23 @@ export class CreatePizzaSuccess implements Action {
     constructor(public payload: Pizza) {}
 }
 
+// update pizzas action creators
+export class UpdatePizza implements Action {
+    readonly type = UPDATE_PIZZA;
+    constructor(public payload: Pizza) {}
+}
+
+export class UpdatePizzaFail implements Action {
+    readonly type = UPDATE_PIZZA_FAIL;
+    constructor(public payload: any) {}
+}
+
+export class UpdatePizzaSuccess implements Action {
+    readonly type = UPDATE_PIZZA_SUCCESS;
+    constructor(public payload: Pizza) {}
+}
+
+
 // action types
 export type PizzasAction =
     | LoadPizzas
@@ -48,4 +72,7 @@ export type PizzasAction =
     | LoadPizzasSuccess
     | CreatePizza
     | CreatePizzaFail
-    | CreatePizzaSuccess;
+    | CreatePizzaSuccess
+    | UpdatePizza
+    | UpdatePizzaFail
+    | UpdatePizzaSuccess;
