@@ -2,7 +2,7 @@ import * as fromToppings from '../actions/toppings.action';
 import { Topping } from '../../models/topping.model';
 
 export interface ToppingsState {
-    entities: {[id: number]: Topping]};
+    entities: { [id: number]: Topping };
     loaded: boolean;
     loading: boolean;
 }
