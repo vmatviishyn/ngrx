@@ -15,28 +15,14 @@ import { Topping } from '../../models/topping.model';
 export class ProductItemComponent implements OnInit {
   pizza$: Observable<Pizza>;
   visualise: Pizza;
-  toppings: Topping[];
+  toppings$: Observable<Topping>;
 
   constructor(private store: Store<fromStore.ProductsState>) {}
 
   ngOnInit() {
     this.store.dispatch(new fromStore.LoadToppings());
     this.pizza$ = this.store.select(fromStore.getSelectedPizza);
-
-    // this.pizzaService.getPizzas().subscribe(pizzas => {
-    //   const param = this.route.snapshot.params.id;
-    //   let pizza;
-    //   if (param === 'new') {
-    //     pizza = {};
-    //   } else {
-    //     pizza = pizzas.find(pizza => pizza.id == parseInt(param, 10));
-    //   }
-    //   this.pizza = pizza;
-    //   this.toppingsService.getToppings().subscribe(toppings => {
-    //     this.toppings = toppings;
-    //     this.onSelect(toppings.map(topping => topping.id));
-    //   });
-    // });
+    this.toppings$ = this.store.select(fromStore.getAllToppings)
   }
 
   onSelect(event: number[]) {
