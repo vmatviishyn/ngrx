@@ -7,7 +7,7 @@
         (update)="onUpdate($event)"
         (remove)="onRemove($event)">
 
-        <pizza-display [pizza]="visualise">
+        <pizza-display [pizza]="visualise$ | async">
         </pizza-display>
 
     </pizza-form>
